@@ -3,4 +3,35 @@
   <groupId>com.wisemoney</groupId>
   <artifactId>WiseMoney</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  <build>
+   <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>com.oracle.ojdbc</groupId>
+  		<artifactId>ojdbc</artifactId>
+  		<version>12.1.0.1</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.hibernate</groupId>
+  		<artifactId>hibernate-core</artifactId>
+  		<version>4.3.11.Final</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.hibernate</groupId>
+  		<artifactId>hibernate-entitymanager</artifactId>
+  		<version>4.3.11.Final</version>
+  	</dependency>
+ </dependencies>  	
 </project>
