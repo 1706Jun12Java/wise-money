@@ -45,7 +45,7 @@ public class Portfolio implements Serializable {
 	
 	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="STOCK_ID")
-	private int stockId;
+	private Stock stockId;
 	
 	@Column(name="VOLUME")
 	private int volume;
@@ -56,7 +56,7 @@ public class Portfolio implements Serializable {
 	@Column(name="LAST_TRANSACTION")
 	private String lastTx;
 	
-	public Portfolio(User userId, Timestamp dateCreated, Timestamp lastUpdated, int stockId, int volume, 
+	public Portfolio(User userId, Timestamp dateCreated, Timestamp lastUpdated, Stock stockId, int volume, 
 			double totalValue, String lastTx) {
 		super();
 		this.userId = userId;
@@ -102,11 +102,11 @@ public class Portfolio implements Serializable {
 		this.lastUpdated = lastUpdated;
 	}	
 	
-	public int getStockId() {
+	public Stock getStockId() {
 		return stockId;
 	}
 
-	public void setStockId(int stockId) {
+	public void setStockId(Stock stockId) {
 		this.stockId=stockId;
 	}
 
