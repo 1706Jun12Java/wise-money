@@ -34,26 +34,21 @@ public class Stock implements Serializable {
 	@Column(name="STOCK_SYMBOL", unique=true)
 	private String stockSymbol;
 	
-	@ManyToMany(mappedBy="stock", fetch=FetchType.EAGER)
-	private List<Portfolio> portfolio;
 
-	public Stock(int stockId, String stockName, String stockSymbol) {
+	public Stock(String stockName, String stockSymbol) {
 		super();
-		this.stockId = stockId;
+		//this.stockId = stockId;
 		this.stockName = stockName;
 		this.stockSymbol = stockSymbol;
 	}
 	
 
-	public Stock(int stockId, String stockName, String stockSymbol, List<Portfolio> portfolio) {
+	public Stock(String stockName, String stockSymbol, List<Portfolio> portfolio) {
 		super();
-		this.stockId = stockId;
+		//this.stockId = stockId;
 		this.stockName = stockName;
 		this.stockSymbol = stockSymbol;
-		this.portfolio = portfolio;
 	}
-
-
 
 	public int getStockId() {
 		return stockId;
@@ -69,8 +64,7 @@ public class Stock implements Serializable {
 
 	public void setStockName(String stockName) {
 		this.stockName = stockName;
-	}
-	
+	}	
 
 	public String getStockSymbol() {
 		return stockSymbol;
@@ -80,23 +74,10 @@ public class Stock implements Serializable {
 		this.stockSymbol = stockSymbol;
 	}
 
-	public List<Portfolio> getPortfolio() {
-		return portfolio;
-	}
-
-	public void setPortfolio(List<Portfolio> portfolio) {
-		this.portfolio = portfolio;
-	}
 
 	@Override
 	public String toString() {
 		return "Stock [stockId=" + stockId + ", stockName=" + stockName + ", stockSymbol=" + stockSymbol
-				+ ", portfolio=" + portfolio + "]";
+				+ "]";
 	}
-
-	
-	
-	
-	
-
 }

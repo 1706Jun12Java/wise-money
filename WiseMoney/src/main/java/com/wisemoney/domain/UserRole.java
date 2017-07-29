@@ -29,9 +29,8 @@ public class UserRole implements Serializable {
 	private String roleName;
 	
 
-	public UserRole(int userRoleId, String roleName) {
+	public UserRole(String roleName) {
 		super();
-		this.userRoleId = userRoleId;
 		this.roleName = roleName;
 	}
 
