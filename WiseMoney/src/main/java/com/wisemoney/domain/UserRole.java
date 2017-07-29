@@ -11,7 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="USER_ROLE")
+@Table(name="WM_USER_ROLE")
 public class UserRole implements Serializable {
 	
 	/**

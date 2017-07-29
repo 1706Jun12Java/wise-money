@@ -18,7 +18,6 @@ public class Driver {
 
 	public static void main(String[] args) {
 		testingDomain();
-
 	}
 	
 	static void testingDomain() {
@@ -27,7 +26,15 @@ public class Driver {
 		Transaction tx = s.beginTransaction();
 		
 		UserRole ur1 = new UserRole("Admin");
-//		UserRole ur2 = new UserRole("Trader");
+		UserRole ur2 = new UserRole("Trader");
+		
+		//User u1 = new User("Maksim", "Loginoff", "usermaksim", "maksimpass", "maksim@gmail.com", ur2);
+		//User u2 = new User("Kate", "Loginoff", "userkate", "katepass", "kateloginoff@gmail.com", ur2);
+		//User u3 = new User("Mister", "Spinner", "usermister", "misterpass", "misterspinner@gmail.com", ur2);
+				
+		Stock s1 = new Stock("Microsoft", "MSFT");
+		Stock s2 = new Stock("Alphabet", "GOOG");
+		Stock s3 = new Stock("Apple", "AAPL");
 		
 //		User u1 = new User("Maksim", "Loginoff", "usermaksim", "maksimpass", "maksim@gmail.com", ur2);
 //		//User u2 = new User("Kate", "Loginoff", "userkate", "katepass", "kateloginoff@gmail.com", ur2);
@@ -50,7 +57,7 @@ public class Driver {
 		s.save(ur1);
 //		s.save(ur2);
 		
-//		s.save(u1);
+		//s.save(u1);
 		//s.save(u2);
 		//s.save(u3);
 		
