@@ -2,6 +2,7 @@ package com.wisemoney.domain;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -32,84 +34,80 @@ public class Portfolio implements Serializable {
 	private int id;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="PORTFOLIO_ID")
-	private User portfolioId;
+	@JoinColumn(name="USER_ID")
+	private User userId;
 	
 	@Column(name="DATE_CREATED")
-	private Timestamp dateCreated;
+	private Date dateCreated;
 	
 	@Column(name="LAST_UPDATED")
-	private Timestamp lastUpdated;
+	private Date lastUpdated;
 	
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinColumn(name="STOCK")
-	private List<Stock> stock;
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="STOCK_ID")
+	private int stockId;
 	
 	@Column(name="VOLUME")
 	private int volume;
 	
 	@Column(name="TOTAL_VALUE")
-	private int totalValue;
+	private double totalValue;
 	
-	public Portfolio(User portfolioId, Timestamp dateCreated, Timestamp lastUpdated, int volume,
-			int totalValue) {
+	@Column(name="LAST_TRANSACTION")
+	private String lastTx;
+	
+	public Portfolio(User userId, Date dateCreated, Date lastUpdated, int stockId, int volume, 
+			double totalValue, String lastTx) {
 		super();
-		this.portfolioId = portfolioId;
+		this.userId = userId;
 		this.dateCreated = dateCreated;
 		this.lastUpdated = lastUpdated;
+		this.stockId=stockId;
 		this.volume = volume;
-		this.totalValue = totalValue;
+		this.totalValue=totalValue;
+		this.lastTx=lastTx;
 	}
 	
-	public Portfolio(User portfolioId, Timestamp dateCreated, Timestamp lastUpdated, List<Stock> stock, int volume,
-			int totalValue) {
+	
+	/*public Portfolio(User userId, Timestamp dateCreated, Timestamp lastUpdated, List<Stock> stock, int volume, double totalValue) {
 		super();
-		this.portfolioId = portfolioId;
+		this.userId = userId;
 		this.dateCreated = dateCreated;
 		this.lastUpdated = lastUpdated;
 		this.stock = stock;
 		this.volume = volume;
-		this.totalValue = totalValue;
-	}
+		this.totalValue=totalValue;
+	} */
 	
 	public Portfolio() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User getPortfolioId() {
-		return portfolioId;
+	public User getUserId() {
+		return userId;
 	}
-	public void setPortfolioId(User portfolioId) {
-		this.portfolioId = portfolioId;
+	public void setUserId(User userId) {
+		this.userId = userId;
 	}
-	public Timestamp getDateCreated() {
+	public Date getDateCreated() {
 		return dateCreated;
 	}
-	public void setDateCreated(Timestamp dateCreated) {
+	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-	public Timestamp getLastUpdated() {
+	public Date getLastUpdated() {
 		return lastUpdated;
 	}
-	public void setLastUpdated(Timestamp lastUpdated) {
+	public void setLastUpdated(Date lastUpdated) {
 		this.lastUpdated = lastUpdated;
-	}
+	}	
 	
-	
-	public int getId() {
-		return id;
+	public int getStockId() {
+		return stockId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public List<Stock> getStock() {
-		return stock;
-	}
-
-	public void setStock(List<Stock> stock) {
-		this.stock = stock;
+	public void setStockId(int stockId) {
+		this.stockId=stockId;
 	}
 
 	public int getVolume() {
@@ -118,22 +116,24 @@ public class Portfolio implements Serializable {
 	public void setVolume(int volume) {
 		this.volume = volume;
 	}
-	public int getTotalValue() {
+	public double getTotalValue() {
 		return totalValue;
 	}
-	public void setTotalValue(int totalValue) {
+
+	public void setTotalValue(double totalValue) {
 		this.totalValue = totalValue;
 	}
-
-	@Override
-	public String toString() {
-		return "Portfolio [portfolioId=" + portfolioId + ", dateCreated=" + dateCreated + ", lastUpdated=" + lastUpdated
-				+ ", stock=" + stock + ", volume=" + volume + ", totalValue=" + totalValue + "]";
+	public String getLastTx() {
+		return lastTx;
+	}
+	public void setLastTx(String lastTx) {
+		this.lastTx=lastTx;
 	}
 	
-	
-	
-	
-	
-
+	@Override
+	public String toString() {
+		return "Portfolio [userId=" + userId + ", dateCreated=" + dateCreated + ", lastUpdated=" + lastUpdated
+				+ ", stockId=" + stockId + ", volume=" + volume + ", totalValue=" + totalValue +", "
+						+ "lastTx=" + lastTx + "]";
+	}
 }

@@ -44,24 +44,15 @@ public class User implements Serializable {
 	@JoinColumn(name="UR_ID")
 	private UserRole userRole;
 	
-	@Column(name="PORTFOLIO_ID", unique=true)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PortfolioIdSequence")
-	@SequenceGenerator(allocationSize=1, name="PortfolioIdSequence", sequenceName="PORTFOLIO_ID_SEQ")
-	private int portfolioId;
-	
-	
-
-	public User(int id, String firstName, String lastName, String username, String password, String email,
-			UserRole userRole, int portfolioId) {
+	public User(String firstName, String lastName, String username, String password, String email,
+			UserRole userRole) {
 		super();
-		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.userRole = userRole;
-		this.portfolioId = portfolioId;
 	}
 
 	public int getId() {
@@ -120,19 +111,10 @@ public class User implements Serializable {
 		this.userRole = userRole;
 	}
 
-	public int getPortfolioId() {
-		return portfolioId;
-	}
-
-	public void setPortfolioId(int portfolioId) {
-		this.portfolioId = portfolioId;
-	}
-
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
-				+ ", password=" + password + ", email=" + email + ", userRole=" + userRole + ", portfolioId="
-				+ portfolioId + "]";
+				+ ", password=" + password + ", email=" + email + ", userRole=" + userRole + "]";
 	}
 	
 	
