@@ -28,7 +28,7 @@ public class Portfolio implements Serializable {
 	private static final long serialVersionUID = 7893649903083151674L;
 
 	@Id
-	@Column(name="ID", unique=true)
+	@Column(name="PORTFOLIO_ID", unique=true)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PortfolioCountSequence")
 	@SequenceGenerator(allocationSize=1, name="PortfolioCountSequence", sequenceName="PORTFOLIO_COUNT_SEQ")
 	private int id;
