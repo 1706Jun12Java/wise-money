@@ -38,7 +38,7 @@ public class Portfolio implements Serializable {
 	private User userId;
 	
 	@Column(name="DATE_CREATED")
-	private Date dateCreated;
+	private Date dateCreated; 
 	
 	@Column(name="LAST_UPDATED")
 	private Date lastUpdated;
