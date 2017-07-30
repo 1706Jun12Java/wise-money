@@ -34,6 +34,10 @@ public class Stock implements Serializable {
 	@Column(name="STOCK_SYMBOL", unique=true)
 	private String stockSymbol;
 	
+	public Stock() {
+		super();
+	}
+	
 
 	public Stock(String stockName, String stockSymbol) {
 		super();

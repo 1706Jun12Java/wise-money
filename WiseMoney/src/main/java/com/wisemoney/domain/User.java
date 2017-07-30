@@ -44,6 +44,10 @@ public class User implements Serializable {
 	@JoinColumn(name="UR_ID")
 	private UserRole userRole;
 	
+	public User() {
+		super();
+	}
+	
 	public User(String firstName, String lastName, String username, String password, String email,
 			UserRole userRole) {
 		super();

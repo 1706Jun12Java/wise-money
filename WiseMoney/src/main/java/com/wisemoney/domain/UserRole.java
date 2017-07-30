@@ -28,6 +28,10 @@ public class UserRole implements Serializable {
 	@Column(name="ROLE_NAME", unique=true)
 	private String roleName;
 	
+	public UserRole() {
+		super();
+	}
+	
 
 	public UserRole(String roleName) {
 		super();
