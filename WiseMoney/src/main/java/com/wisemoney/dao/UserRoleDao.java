@@ -1,5 +1,8 @@
 package com.wisemoney.dao;
 
-public class UserRoleDao {
+import com.wisemoney.domain.UserRole;
+
+public interface UserRoleDao {
+	public UserRole getRole(String roleName);
 
 }
