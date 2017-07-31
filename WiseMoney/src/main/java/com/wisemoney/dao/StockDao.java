@@ -1,5 +1,10 @@
 package com.wisemoney.dao;
 
-public class StockDao {
+import com.wisemoney.domain.Stock;
+
+public interface StockDao {
+	
+	public Stock getStockByName(String stockName);
+	public Stock getStockBySymbol(String stockSymbol);
 
 }

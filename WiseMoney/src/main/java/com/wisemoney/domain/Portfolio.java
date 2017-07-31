@@ -19,7 +19,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="PORTFOLIO")
+@Table(name="WM_PORTFOLIO")
 public class Portfolio implements Serializable {
 	
 	/**
@@ -43,9 +43,9 @@ public class Portfolio implements Serializable {
 	@Column(name="LAST_UPDATED")
 	private Timestamp lastUpdated;
 	
-	@OneToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="STOCK_ID")
-	private int stockId;
+	private Stock stockId;
 	
 	@Column(name="VOLUME")
 	private int volume;
@@ -56,7 +56,7 @@ public class Portfolio implements Serializable {
 	@Column(name="LAST_TRANSACTION")
 	private String lastTx;
 	
-	public Portfolio(User userId, Timestamp dateCreated, Timestamp lastUpdated, int stockId, int volume, 
+	public Portfolio(User userId, Timestamp dateCreated, Timestamp lastUpdated, Stock stockId, int volume, 
 			double totalValue, String lastTx) {
 		super();
 		this.userId = userId;
@@ -68,8 +68,8 @@ public class Portfolio implements Serializable {
 		this.lastTx=lastTx;
 	}
 	
-	
-	/*public Portfolio(User userId, Timestamp dateCreated, Timestamp lastUpdated, List<Stock> stock, int volume, double totalValue) {
+	/*
+	public Portfolio(User userId, Timestamp dateCreated, Timestamp lastUpdated, List<Stock> stock, int volume, double totalValue) {
 		super();
 		this.userId = userId;
 		this.dateCreated = dateCreated;
@@ -77,7 +77,7 @@ public class Portfolio implements Serializable {
 		this.stock = stock;
 		this.volume = volume;
 		this.totalValue=totalValue;
-	} */
+	}*/ 
 	
 	public Portfolio() {
 		// TODO Auto-generated constructor stub
@@ -102,11 +102,11 @@ public class Portfolio implements Serializable {
 		this.lastUpdated = lastUpdated;
 	}	
 	
-	public int getStockId() {
+	public Stock getStockId() {
 		return stockId;
 	}
 
-	public void setStockId(int stockId) {
+	public void setStockId(Stock stockId) {
 		this.stockId=stockId;
 	}
 

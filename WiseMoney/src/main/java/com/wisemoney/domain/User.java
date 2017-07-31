@@ -14,7 +14,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="WISE_MONEY_USER")
+@Table(name="WM_USER")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 188661191408085712L;
@@ -43,6 +43,10 @@ public class User implements Serializable {
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="UR_ID")
 	private UserRole userRole;
+	
+	public User() {
+		super();
+	}
 	
 	public User(String firstName, String lastName, String username, String password, String email,
 			UserRole userRole) {

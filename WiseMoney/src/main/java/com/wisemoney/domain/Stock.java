@@ -14,7 +14,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="STOCK")
+@Table(name="WM_STOCK")
 public class Stock implements Serializable {
 	
 	/**
@@ -33,6 +33,10 @@ public class Stock implements Serializable {
 	
 	@Column(name="STOCK_SYMBOL", unique=true)
 	private String stockSymbol;
+	
+	public Stock() {
+		super();
+	}
 	
 
 	public Stock(String stockName, String stockSymbol) {
