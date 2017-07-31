@@ -28,7 +28,7 @@ public class Portfolio implements Serializable {
 	private static final long serialVersionUID = 7893649903083151674L;
 
 	@Id
-	@Column(name="P_ID", unique=true)
+	@Column(name="PORTFOLIO_ID", unique=true)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PortfolioCountSequence")
 	@SequenceGenerator(allocationSize=1, name="PortfolioCountSequence", sequenceName="PORTFOLIO_COUNT_SEQ")
 	private int id;
@@ -38,10 +38,10 @@ public class Portfolio implements Serializable {
 	private User userId;
 	
 	@Column(name="DATE_CREATED")
-	private Date dateCreated; 
+	private Timestamp dateCreated;
 	
 	@Column(name="LAST_UPDATED")
-	private Date lastUpdated;
+	private Timestamp lastUpdated;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="STOCK_ID")
@@ -56,7 +56,7 @@ public class Portfolio implements Serializable {
 	@Column(name="LAST_TRANSACTION")
 	private String lastTx;
 	
-	public Portfolio(User userId, Date dateCreated, Date lastUpdated, Stock stockId, int volume, 
+	public Portfolio(User userId, Timestamp dateCreated, Timestamp lastUpdated, Stock stockId, int volume, 
 			double totalValue, String lastTx) {
 		super();
 		this.userId = userId;
@@ -89,16 +89,16 @@ public class Portfolio implements Serializable {
 	public void setUserId(User userId) {
 		this.userId = userId;
 	}
-	public Date getDateCreated() {
+	public Timestamp getDateCreated() {
 		return dateCreated;
 	}
-	public void setDateCreated(Date dateCreated) {
+	public void setDateCreated(Timestamp dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-	public Date getLastUpdated() {
+	public Timestamp getLastUpdated() {
 		return lastUpdated;
 	}
-	public void setLastUpdated(Date lastUpdated) {
+	public void setLastUpdated(Timestamp lastUpdated) {
 		this.lastUpdated = lastUpdated;
 	}	
 	
