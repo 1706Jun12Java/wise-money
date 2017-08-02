@@ -1,9 +1,13 @@
 package com.wisemoney.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.wisemoney.domain.Portfolio;
 import com.wisemoney.domain.Stock;
 import com.wisemoney.util.HibernateUtil;
 
@@ -37,6 +41,21 @@ public class StockDaoImpl implements StockDao {
 		tx.commit();
 		s.close();
 		return stock;
+	}
+
+	@Override
+	public List<Stock> getStockList() {
+		
+		Session s = HibernateUtil.getSession();
+		Transaction tx = s.beginTransaction();
+		
+		List<Stock> stocks = new ArrayList<Stock>();
+		stocks = s.createQuery("from Stock").list();
+	
+		tx.commit();
+		s.close();
+		
+		return stocks;
 	}
 	
 
