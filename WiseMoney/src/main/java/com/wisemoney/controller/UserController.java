@@ -1,4 +1,4 @@
-package com.wisemoney.controller;
+ package com.wisemoney.controller;
 
 import java.io.IOException;
 
@@ -11,10 +11,11 @@ import javax.servlet.http.HttpSession;
 
 import com.wisemoney.dao.UserDaoImpl;
 
-public class UserControllerServlet extends HttpServlet{
+public class UserController extends HttpServlet{
 
 	/**
-	 * 
+	 * http://www.javawebtutor.com/articles/hibernate/hibernate_web_example.php
+	 * master servlet should be in web.xml
 	 */
 	private static final long serialVersionUID = 1L;
 	
