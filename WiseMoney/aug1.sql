@@ -1,0 +1,1 @@
+select * from wm_user;
