@@ -3,26 +3,35 @@
   
   <display-name>WiseMoney</display-name>
   
-  <context-param>
-  	<param-name>contextConfigLocation</param-name>
-  	<param-value>/WEB-INF/beans.xml</param-value>
-  </context-param>
+  
   
   <servlet>
-        <servlet-name>spring-mvc</servlet-name>
+        <servlet-name>dispatcherServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+  			<param-name>contextConfigLocation</param-name>
+  			<param-value>/WEB-INF/beans.xml</param-value>
+  		</init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>spring-mvc</servlet-name>
+        <servlet-name>dispatcherServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+    <context-param>
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>/WEB-INF/beans.xml</param-value>
+  	</context-param>
   
     <servlet>
         <display-name>registerUser</display-name>
         <servlet-name>registerUser</servlet-name>
         <servlet-class>com.wisemoney.controller.UserControllerServlet</servlet-class>
     </servlet>
+    <listener>
+    	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
     <servlet-mapping>
         <servlet-name>registerUser</servlet-name>
         <url-pattern>/registerUser</url-pattern>
