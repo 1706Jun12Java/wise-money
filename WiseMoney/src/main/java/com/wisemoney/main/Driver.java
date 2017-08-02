@@ -17,24 +17,24 @@ import com.wisemoney.util.HibernateUtil;
 public class Driver {
 
 	public static void main(String[] args) {
-		testingDomain();
+//		testingDomain();
 	}
 	
 	static void testingDomain() {
-		Date date = new Date();
-		Session s = HibernateUtil.getSession();
-		Transaction tx = s.beginTransaction();
-		
-		UserRole ur1 = new UserRole("Admin");
-		UserRole ur2 = new UserRole("Trader");
+//		Date date = new Date();
+//		Session s = HibernateUtil.getSession();
+//		Transaction tx = s.beginTransaction();
+//		
+//		UserRole ur1 = new UserRole("Admin");
+//		UserRole ur2 = new UserRole("Trader");
 		
 		//User u1 = new User("Maksim", "Loginoff", "usermaksim", "maksimpass", "maksim@gmail.com", ur2);
 		//User u2 = new User("Kate", "Loginoff", "userkate", "katepass", "kateloginoff@gmail.com", ur2);
 		//User u3 = new User("Mister", "Spinner", "usermister", "misterpass", "misterspinner@gmail.com", ur2);
 				
-		Stock s1 = new Stock("Microsoft", "MSFT");
-		Stock s2 = new Stock("Alphabet", "GOOG");
-		Stock s3 = new Stock("Apple", "AAPL");
+//		Stock s1 = new Stock("Microsoft", "MSFT");
+//		Stock s2 = new Stock("Alphabet", "GOOG");
+//		Stock s3 = new Stock("Apple", "AAPL");
 		
 //		User u1 = new User("Maksim", "Loginoff", "usermaksim", "maksimpass", "maksim@gmail.com", ur2);
 //		//User u2 = new User("Kate", "Loginoff", "userkate", "katepass", "kateloginoff@gmail.com", ur2);
@@ -54,7 +54,7 @@ public class Driver {
 		//Portfolio p8 = new Portfolio(u3,date,date,2,7,6587.00,"BUY");
 		//Portfolio p9 = new Portfolio(u3,date,date,3,7,1043.00,"SELL");		
  
-		s.save(ur1);
+//		s.save(ur1);
 //		s.save(ur2);
 		
 		//s.save(u1);
@@ -74,8 +74,8 @@ public class Driver {
 		
 //		p1.getStock().add(s1);
 //				
-		tx.commit();
-		s.close();
+//		tx.commit();
+//		s.close();
 	}
 
 }
