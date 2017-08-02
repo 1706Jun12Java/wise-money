@@ -38,7 +38,7 @@ target/
 /RemoteSystemsTempFiles/
 /External Files/
 hibernate.cfg.xml
-
+env.properties
 
 
 
