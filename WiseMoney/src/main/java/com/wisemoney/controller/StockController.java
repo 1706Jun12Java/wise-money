@@ -17,13 +17,13 @@ import com.wisemoney.domain.Stock;
 @Controller
 public class StockController {
 	
-	@RequestMapping(value="/test")
-	@ResponseBody
-	public String showLoginPage( ) {
-//		model.put("name", "wisemoney");
-		return "welcome";
-		
-	}
+//	@RequestMapping(value="/test")
+//	@ResponseBody
+//	public String showLoginPage( ) {
+////		model.put("name", "wisemoney");
+//		return "welcome";
+//		
+//	}
 	
 //	@RequestMapping("/add")
 //	public ModelAndView add(HttpServletRequest request, HttpServletResponse response) {
@@ -42,7 +42,7 @@ public class StockController {
 	@RequestMapping("/add")
 	public ModelAndView showStocks(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("display.jsp");
+		mv.setViewName("display");
 		StockDao sd = new StockDaoImpl();
 		
 		List<Stock> stock = sd.getStockList();
