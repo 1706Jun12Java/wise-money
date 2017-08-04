@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.wisemoney.domain.Stock;
 import com.wisemoney.domain.User;
 import com.wisemoney.domain.UserRole;
 import com.wisemoney.util.HibernateUtil;
@@ -27,7 +28,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public int login(String username, String password) {
 		Session s = HibernateUtil.getSession();
-		Query query = s.createQuery("select userId from User u where u.username=:username and u.password=:password");
+		Query query = s.createQuery("select id from User u where u.username=:username and u.password=:password");
 		query.setString("username", username);
 		query.setString("password", password);
 		int userId = (int) query.uniqueResult();
@@ -43,14 +44,19 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void addNewUser(String username, String firstname, String lastname, String password, String email) {
+	public void register(String username, String firstname, String lastname, String password, String email) {
+		
 		UserRole ur2 = new UserRole("Trader");
 		try {
 			Session s = HibernateUtil.getSession();             
             // 4. Starting Transaction
             Transaction tx = s.beginTransaction();
-            User user = new User(username,firstname,lastname,password,email,ur2);
-            //user.setFirstName(firstname);
+            
+            Query query = s.createQuery("from UserRole ur where ur.roleName=:roleName");
+    			query.setString("roleName", "Trader");
+    			UserRole userRole = (UserRole) query.uniqueResult();
+            
+            User user = new User(firstname, lastname, username, password, email, userRole);
             s.save(user);
             tx.commit();
             System.out.println("\n\n Details Added \n");

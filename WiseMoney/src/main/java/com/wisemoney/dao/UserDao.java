@@ -10,6 +10,6 @@ public interface UserDao {
 	public int login(String username, String password);
 //	public void logout();
 	public List<User> getUserList(); //manager can view all employees
-	public void addNewUser(String username, String firstname, String lastname, String password, String email);
+	public void register(String username, String firstname, String lastname, String password, String email);
 
 }
