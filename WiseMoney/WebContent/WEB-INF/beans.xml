@@ -16,10 +16,15 @@
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
-			<value>/WEB-INF/pages/</value>
+			<value>/views/</value>
 		</property>
 		<property name="suffix">
-			<value></value>
+			<value>.jsp</value>
 		</property>
 	</bean>
+	
+<!--  	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
+ --> 	<mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
+ 	 	<mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
+ 	 	<mvc:resources location="/" mapping="/**"></mvc:resources>
 </beans>
