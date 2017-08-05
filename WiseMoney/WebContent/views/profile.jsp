@@ -6,6 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Profile Page</title>
 <script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script
 	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"
@@ -13,23 +15,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 <body>
-<!-- <script type="text/javascript" src="js/StockCtrl.js"></script>
- -->
-<%-- <% User user = (loginbean) req.getAttribute("user");
- --%>	
-<!-- <div ng-controller="StockCtrl">
-	Hello there, I am logged in as {{stockData}}
-</div>
-	<h2>List of Stocks</h2>
-	<a class="btn btn-primary btn-md" href="#/">Stock List</a>
- -->	
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Wise Money</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="Active"><a href="profile">Home</a></li>
+					
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="logout">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+	<div class="container">
+		<div class="jumbotron">
+			<h4>Portfolio</h4>
+			<c:forEach items="${stockList}" var="stock">
+				<tr>
+					<td>${stock.stockName}</td>
+				</tr>
+			</c:forEach>
+				<p>${stockList}</p>
+				
+		</div>
+	
+	</div>
+ 
+	<h2>List of Stocks</h2> 
 	${userData.firstName}
 	${userData.lastName}
 	${userData.email}
@@ -40,6 +63,9 @@
 	
 	
 <div ng-view></div>
+
+
+
 </body>
 <script src="js/app.js"></script>
 <script src="js/TestCtrl.js"></script>
