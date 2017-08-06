@@ -33,5 +33,18 @@ function onPlayerStateChange(event) {
   }
 }
 function stopVideo() {
-  player.stopVideo();
+	player.stopVideo();
+}
+
+function playVideo() {
+	player.playVideo();
+}
+
+function pauseVideo() {
+	player.pauseVideo();
+}
+
+function togglePlayerState() {
+	var playerState = this.player.player.getPlayerState();
+	playerState == 1 ? this.player.player.pauseVideo() : this.player.player.playVideo();
 }

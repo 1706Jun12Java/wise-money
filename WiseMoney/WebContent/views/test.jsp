@@ -12,7 +12,7 @@
 		<button ng-click="toggleTime()">show the time?</button>
 	</p>
 	<div ng-show="showTime">
-		<label>The current time is:</label>{{theTime}}
+		<label>The current time is -</label>{{theTime}}
 	</div>
 
 </div>
