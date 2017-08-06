@@ -2,6 +2,7 @@ package com.wisemoney.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -40,7 +41,7 @@ public class User implements Serializable {
 	@Column(name="EMAIL", unique=true)
 	private String email;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="UR_ID")
 	private UserRole userRole;
 	
@@ -55,6 +56,16 @@ public class User implements Serializable {
 		this.lastName = lastName;
 		this.username = username;
 		this.password = password;
+		this.email = email;
+		this.userRole = userRole;
+	}
+	
+	public User(String firstName, String lastName, String username, String email,
+			UserRole userRole) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
 		this.email = email;
 		this.userRole = userRole;
 	}
@@ -118,7 +129,7 @@ public class User implements Serializable {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", username=" + username
-				+ ", password=" + password + ", email=" + email + ", userRole=" + userRole + "]";
+				+ ", email=" + email + ", userRole=" + userRole + "]";
 	}
 	
 	
