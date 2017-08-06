@@ -5,80 +5,74 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>New Transaction</title>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+     <meta charset="utf-8" />
+     <title>Pure Angular JS Autocomplete Text Field</title>
+     <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+     <script type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+	<!--<script src="controllers/autoCompleteCTRL.js"></script>-->
 	
-<link href="http://fonts.googleapis.com/css?family=Abel|Buenard:400,700" rel="stylesheet" />
-<link rel="stylesheet" href="resources/css/wsstyle.css"/>
-<!--
-<link rel="stylesheet" href="resources/css/wsstyle.css"/>
--->
+	<style>
+	/* style for autocomplete drop-down list */
+		@charset "utf-8";
+		body {	
+			background: url(media/wmbackground.png) no-repeat center center fixed; 
+  			-webkit-background-size: cover;
+  			-moz-background-size: cover;
+  			-o-background-size: cover;
+  			background-size: cover;
+  		}		
+		.suggestions-list {
+			position: relative;
+			list-style-type: none;
+			margin:0px;
+			padding:0;
+			overflow:hidden;
+			border-radius:.5em;
+		}
+		.suggestions-list li {
+			color: #000000;
+			padding: 5px 10px;
+			height:30px;
+			cursor: pointer;
+			background: #f5f5f5;
+			border-left: 1px solid #ddd;
+			border-right: 1px solid #ddd;
+			width:382px;
+		}
+		.suggestions-list li:last-child{
+			border-bottom: 1px solid #ddd;
+		}
+		.suggestions-list li:hover {
+			background: #ddd;
+		}
+		.suggestions-list li:active,
+		.suggestions-list li.active {
+			color: #FFFFFF;
+			background: #0610a3;
+			width:382px;
+		}
+		.suggestions-list:focus{
+			outline:none;
+		}
+	</style>        
 </head>
 
-<div id="wrapper">
-<body >
-	<h1 id="header2">WiseMoney <span>Portfolio Risk Evaluation</span></h1>
-	
-	<div id="nav">
-	<ul>
-		<li><a href="" style="background-color:#869DC7; padding-top: 10px; padding-bottom: 10px">Home</a></li>
-		<li><a href="">View Portfolio</a></li>
-		<li><a href="">Manager Login</a></li>
-		<li><a href="">Log out</a></li>
+<body ng-app="app" ng-controller="autoCompleteCTRL" ng-click="hideMenu($event)">
+       	
+	<div class="label">Enter stock symbol:</div>          
+	<div><input type="text" placeholder="Search for stocks" id="textFiled" class="input" ng-keydown="checkKeyDown($event)" ng-keyup="checkKeyUp($event)"  ng-model="searchText" ng-change="search()" /></div>
+		<ul class="suggestions-list">
+			<li ng-repeat="suggestion in suggestions track by $index" ng-class="{active : selectedIndex === $index}" ng-click="AssignValueAndHide($index)">{{suggestion}}</li>
 		</ul>
-	</div>
-	<div class="content" ng-app="app" ng-controller="autoCompleteCTRL" ng-click="hideMenu($event)" id="myBody">
-	<h3 align="center">New Transaction</h3>
-	
-		<div class="div1">
-		
-			<form class="tx-form" action="newtx" method="POST">
-			
-			<p class="message">Enter stock symbol:</p>
-			<div class="list-wrapper">        	
-        	<!-- <div class="label">Enter stock symbol:</div>  -->          
-            <div><input type="text" placeholder="Search for stocks" id="textFiled" class="input" ng-keydown="checkKeyDown($event)" ng-keyup="checkKeyUp($event)"  ng-model="searchText" ng-change="search()" /></div>
-            <ul class="suggestions-list">
-                <li ng-repeat="suggestion in suggestions track by $index" ng-class="{active : selectedIndex === $index}" ng-click="AssignValueAndHide($index)">{{suggestion}}</li>
-            </ul>
-            
-        </div>
-			
-			  
-			 <p class="message">Enter volume:</p>
-			  <input type="text" name="stockVolume"/>
-			  
-			  <p class="message">Transaction type:</p>
-			  <select id="confirmselect">
-				  <option id = "txOption" value="txOption">Choose Transaction</option>
-				  <option id = "buy" value="buy">BUY</option>
-				  <option value="sell">SELL</option>
-				</select>
-			 <p class="message">Order type:</p>
-			  <select id="confirmselect">
-				  <option id = "orderType">Choose Order Type</option>
-				  <option id = "buy">Market Order</option>
-				  <option id="sell">Limit Order</option>
-				  <option id="sell">Stop Order</option>
-				</select>
-			  
-			  <button type="submit" name="SubmitButton" value="submit">&nbsp;&nbsp;Submit&nbsp;&nbsp;&nbsp; </button>
-			</form>
-		</div>
-	</div>
+	</div>        
+<!-- End Of view -->
 </body>
-</div>
-<footer id="sticky">
-	<span style="float:left;">WiseMoney. © All rights reserved.</span>
-	<span style="float:right;">Follow us on social media</span>
-</footer>
+    
 </html>
 
 <script>
+// JavaScript Document
 var app = angular.module('app',[]);
 app.controller('autoCompleteCTRL', function($scope, $rootScope){
 	"use strict";
@@ -187,5 +181,7 @@ app.controller('autoCompleteCTRL', function($scope, $rootScope){
 		 $rootScope.selectedIndex = -1;
 	};
 	//======================================
+	
+
 });
 </script>

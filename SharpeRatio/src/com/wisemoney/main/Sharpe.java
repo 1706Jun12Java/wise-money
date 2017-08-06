@@ -3,16 +3,11 @@ import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 public class Sharpe {
 
-	public Sharpe() {
-		// TODO Auto-generated constructor stub
-	}
-	
 	public final double getSharpeRatio(final double [] returns, final double riskFreeReturn) {
 		final DescriptiveStatistics stats = new DescriptiveStatistics();
         for(double item : returns) {
     		stats.addValue(item);
-    	}
-        
+    	}        
         final int MONTH_IN_YEAR = 12;
         
     	double mean = stats.getMean();

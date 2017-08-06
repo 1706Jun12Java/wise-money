@@ -4,7 +4,7 @@
 <html>
 	<head>
 	</head>
-	<body>
+	<body ng-app="app" ng-controller="autoCompleteCTRL" ng-click="hideMenu($event)">
 <%-- 		<form:form method="POST" action="/stockForm" modelAttribute="portfolio">
 			<table>
 				<tr>
