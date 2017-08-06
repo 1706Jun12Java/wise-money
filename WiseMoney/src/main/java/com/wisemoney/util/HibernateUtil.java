@@ -12,7 +12,7 @@ import org.hibernate.service.ServiceRegistry;
 
 public class HibernateUtil {
 	
-	private static SessionFactory sessionFactory = setSessionFactory();
+	private static final SessionFactory sessionFactory = setSessionFactory();
 	private static Session session;
 	
 	public static Session getSession() {
