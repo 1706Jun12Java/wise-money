@@ -1,17 +1,20 @@
 var app = angular.module('wiseMoneyApp', ['ngRoute']);
 app.config(function($routeProvider){
 	$routeProvider
-//	.when('/', {
-//		templateUrl: 'views/register.jsp'
-//	})
 	.when('/test', {
 		templateUrl: 'views/test.jsp',
 		controller: 'TestCtrl'
 	})
-	.when('/home', {
-		templateUrl: 'index.jsp',
-		controller: 'ProfileCtrl'
+	.when('/stocks', {
+		templateUrl: 'views/stockInfo.jsp',
+		controller: 'StockCtrl'
 	})
-//	.otherwise({redirectTo: '/'});
-	
+	.when('/portfolio', {
+		templateUrl: 'views/portfolio.jsp',
+		controller: 'PortfolioCtrl'
+	})
+	.when('/stockForm', {
+		templateUrl: 'views/stockForm.jsp',
+		controller: 'StockFormCtrl'
+	})
 });

@@ -144,7 +144,16 @@
  	margin: auto;
      margin-bottom: 20px;
  }    
-    
+ 
+ .sec-nav {
+ background-color: #f0ad4e;
+ } 
+ 
+ .jumbotron {
+  background-color: #f0ad4e;
+ 
+ 
+ }  
     
     
     

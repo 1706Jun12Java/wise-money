@@ -4,8 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Register New Account</title>
+<title>Sign In</title>
 <link rel="stylesheet" href="css/main.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 <!-- Latest compiled and minified CSS -->
@@ -28,7 +30,9 @@
 	frameborder="0" allowfullscreen></iframe>
 	</div>
 </div> 
-
+<%-- <c:if test="${not empty errorMessage}">
+	<c:out value=${errorMessage}"/>
+</c:if> --%>
 <h3 class="projectTitle">Wise Money</h3>
 
 <div class="container">
@@ -41,7 +45,7 @@
                 <input type="text" class="form-control" placeholder="Username" name="username" required>
                 <input type="password" class="form-control" placeholder="Password" name="password" required>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
-                    Register</button>
+                    Sign in</button>
                 <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
                 <a href="/WiseMoney/register" class="text-center new-account">Create an account </a>
                 
@@ -51,6 +55,6 @@
     </div>
 </div>
     
-    <script src="../js/player.js"></script>
+    <script src="js/player.js"></script>
 </body>
 </html>
