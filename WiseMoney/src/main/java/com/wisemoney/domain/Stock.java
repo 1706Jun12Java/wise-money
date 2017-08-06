@@ -34,23 +34,27 @@ public class Stock implements Serializable {
 	@Column(name="STOCK_SYMBOL", unique=true)
 	private String stockSymbol;
 	
+	@Column(name="STOCK_VALUE", unique=true)
+	private double stockValue;
+	
 	public Stock() {
 		super();
 	}
 	
 
-	public Stock(String stockName, String stockSymbol) {
+	public Stock(String stockName, String stockSymbol, double stockValue) {
 		super();
-		//this.stockId = stockId;
 		this.stockName = stockName;
 		this.stockSymbol = stockSymbol;
+		this.stockValue = stockValue;
 	}
 	
 
-	public Stock(String stockName, String stockSymbol, List<Portfolio> portfolio) {
+	public Stock(String stockName, String stockSymbol, double stockValue, List<Portfolio> portfolio) {
 		super();
 		//this.stockId = stockId;
 		this.stockName = stockName;
+		this.stockValue = stockValue;
 		this.stockSymbol = stockSymbol;
 	}
 
@@ -73,15 +77,25 @@ public class Stock implements Serializable {
 	public String getStockSymbol() {
 		return stockSymbol;
 	}
+	
+	public double getStockValue() {
+		return stockValue;
+	}
 
 	public void setStockSymbol(String stockSymbol) {
 		this.stockSymbol = stockSymbol;
+	}
+
+	public void setStockValue(double stockValue) {
+		this.stockValue = stockValue;
 	}
 
 
 	@Override
 	public String toString() {
 		return "Stock [stockId=" + stockId + ", stockName=" + stockName + ", stockSymbol=" + stockSymbol
-				+ "]";
+				+ ", stockValue=" + stockValue + "]";
 	}
+	
+	
 }

@@ -10,23 +10,22 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-//public class HibernateUtil {
-//
-//	private static SessionFactory sessionFactory(String filename) {
-//		Configuration c = new Configuration().configure(filename);
-//		ServiceRegistry sr = new StandardServiceRegistryBuilder().applySettings(
-//				c.getProperties()).build();
-//		return c.buildSessionFactory(sr);
-//	}
-//
-//	public static Session getSession() {
-//		return sessionFactory("hibernate.cfg.xml").openSession();
-//	}
-//}
-
 public class HibernateUtil {
+	
+	private static SessionFactory sessionFactory = setSessionFactory();
+	private static Session session;
+	
+	public static Session getSession() {
+		session = sessionFactory.openSession();
+		return session;
+	}
+	
+	public void closeSession() {
+		if(session.isOpen())
+			session.close();
+	}
 
-	private static SessionFactory sessionFactory(String filename) {
+	private static synchronized SessionFactory sessionFactory(String filename) {
 
 		Configuration c = new Configuration();
 
@@ -61,8 +60,9 @@ public class HibernateUtil {
    		ServiceRegistry sr = new StandardServiceRegistryBuilder().applySettings(c.getProperties()).build();
         return c.buildSessionFactory(sr);
     }
+	
+	public static SessionFactory setSessionFactory() {
+		return sessionFactory("hibernate.cfg.xml");
+	}
 
-    public static Session getSession() {
-        return sessionFactory("hibernate.cfg.xml").openSession();
-    }
 }

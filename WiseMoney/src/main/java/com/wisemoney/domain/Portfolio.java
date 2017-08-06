@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,7 +34,7 @@ public class Portfolio implements Serializable {
 	@SequenceGenerator(allocationSize=1, name="PortfolioCountSequence", sequenceName="PORTFOLIO_COUNT_SEQ")
 	private int id;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="USER_ID")
 	private User userId;
 	
@@ -43,7 +44,7 @@ public class Portfolio implements Serializable {
 	@Column(name="LAST_UPDATED")
 	private Timestamp lastUpdated;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="STOCK_ID")
 	private Stock stockId;
 	

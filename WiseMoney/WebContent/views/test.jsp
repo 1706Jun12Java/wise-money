@@ -4,13 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Simple person view</title>
 </head>
-<body>
-<p>Hello World! Model data:</p>
-	<ul>
-		<li>first name</li>
-		<li>last name</li>
-	</ul>
-</body>
+<div ng-controller="TestCtrl">
+	<p>fun with services</p>
+	<label>Our current location is:</label>{{myUrl}}<br>
+	<p>
+		<button ng-click="toggleTime()">show the time?</button>
+	</p>
+	<div ng-show="showTime">
+		<label>The current time is -</label>{{theTime}}
+	</div>
+
+</div>
 </html>
