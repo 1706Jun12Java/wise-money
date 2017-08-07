@@ -5,13 +5,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>My Profile</title>
+
+<link rel="stylesheet" href="../css/table.css">
+<link rel="stylesheet" href="../css/main.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="css/table.css">
+
+
 
 </head>
 <body>
@@ -35,18 +39,48 @@
 				</ul>
 			</div>
 		</div>
+		</nav>
 		</div>
 		</div>
 		</nav>
-	</nav>
-	</div>
-			<ul>
-				<li class="active"><a href="#/portfolio">My Portfolio</a></li>
-				<li class="active"><a href="#/stocks">Stock Market</a></li>
-				<li class="active"><a href="#/stockForm">BUY/SELL</a></li>				
+		
+		<div class="col-md-2">
+		
+		<nav class="navbar navbar-inverse sidebar">		
+		<div class="container-fluid">
+		<div class="navbar-header">
+			<div class="navbar-brand" align="center">Menu</div>
+			</div>
+			
+		
+		
+			
+			<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li>
+				 <a href="#/portfolio">
+				 My Portfolio</a></li>
+				
+				
+				<li>
+				<a href="#/stocks">
+				Stock Market</a></li>
+				
+				
+				
+				<li>
+				<a href="#/stockForm">
+				BUY/SELL</a></li>				
 			</ul>
-	</nav>
-		<div ng-view></div>
+			</div>
+		</div>
+		</nav>
+		</div>
+	
+	
+	
+	
+		<div class="col-md-10" ng-view></div>
 
 </body>
 <script src="js/app.js"></script>
