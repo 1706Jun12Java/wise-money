@@ -12,7 +12,7 @@ import org.hibernate.service.ServiceRegistry;
 
 public class HibernateUtil {
 	
-	private static final SessionFactory sessionFactory = sessionFactory();
+	private static SessionFactory sessionFactory = sessionFactory();
 	private static Session session;
 	
 	public static Session getSession() {
@@ -24,7 +24,7 @@ public class HibernateUtil {
 			session.close();
 	}
 
-	private static SessionFactory sessionFactory() {
+	private static synchronized SessionFactory sessionFactory() {
 		Properties prop = new Properties();
 
 		Configuration c = null;

@@ -104,6 +104,7 @@ public class UserController {
 	public String updatePortfolio(HttpSession session, HttpServletRequest req) {
 		LOGGER.debug("In updatePortfolio method");
 		String stockSymbol = req.getParameter("stockSymbol");
+		System.out.println(stockSymbol);
 		String volumeString = req.getParameter("volume");
 		int volume = Integer.parseInt(volumeString);
 		String lastTx = req.getParameter("lastTx");
@@ -111,7 +112,7 @@ public class UserController {
 		User user = (User) session.getAttribute("user");
 		StockDao sd = new StockDaoImpl();
 		Stock stock = (Stock) sd.getStockBySymbol(stockSymbol);
-				
+		
 		PortfolioDao pd = new PortfolioDaoImpl();
 		
 		if (lastTx.equals("BUY")) {
@@ -121,6 +122,7 @@ public class UserController {
 			LOGGER.debug("User sold a share(s)");
 			pd.sellUserStockShares(user, stock, volume);
 		}
+		//check that he enters only the allowed stock symbols
 		
 		LOGGER.debug("Return to profile page");
 		return "redirect:profile";
