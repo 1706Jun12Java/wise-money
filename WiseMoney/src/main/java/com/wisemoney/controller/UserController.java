@@ -112,7 +112,7 @@ public class UserController {
 			return "profile";	
 		} else {
 			LOGGER.debug("Not signed in yet. Return to login page");
-			return "login";
+			return "redirect:login";
 		}
 	}
 	

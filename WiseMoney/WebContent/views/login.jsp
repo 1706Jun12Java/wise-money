@@ -43,7 +43,8 @@
                 <img class="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="">
                 <form class="form-signin" action="login" method="POST">
                 <input type="text" class="form-control" placeholder="Username" name="username" required>
-                <input type="password" class="form-control" placeholder="Password" name="password" required>
+                <input type="password" class="form-control" placeholder="Password" name="password" value="${fn:escapeXml(param.username)}" required>
+                <span class="error">${messages.password}</span>
                 
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
                     Sign in</button>
