@@ -133,7 +133,7 @@ public class UserController {
 		
 		if(volume<=0) {
 			messages.put("volume", "Invalid number. Please enter a positive number greater than 0");
-			return "redirect:http://localhost:8080/WiseMoney/profile#/stockForm";
+			return "redirect:profile";
 			
 		}
 		
