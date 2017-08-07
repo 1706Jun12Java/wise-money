@@ -5,31 +5,17 @@
 	<head>
 	</head>
 	<body>
-<%-- 		<form:form method="POST" action="/stockForm" modelAttribute="portfolio">
-			<table>
-				<tr>
-					<td><form:label path="stockId">Stock Name</form:label></td>
-					<td><form:input path="stockId"/></td>
-				</tr>
-				<tr>
-					<td><form:label path="volume">Volume</form:label></td>
-					<td><form:input path="volume"/></td>
-				</tr>
-				<tr>
-					<td><form:label path="lastTx">Transaction</form:label></td>
-					<td><form:input path="lastTx"/></td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="Submit"/></td>
-				</tr>
-			</table>
-		</form:form> --%>
 
+	<div class="col-md-8">
 		<form role="form" action="stockForm" method="post" id="login-form">
 			<div class="form-group">
 				<label for="stockSymbol" class="sr-only">Stock</label>
-				<input type="text" name="stockSymbol" class="form-control" placeholder="Stock Symbol">
-			</div>
+ 		 				
+ 			<select name="stockSymbol" class="form-control" placeholder="Select Stock">
+ 				<option ng-repeat="stock in stocks" value="{{stock.stockSymbol}}">{{stock.stockSymbol}}/{{stock.stockName}}</option>
+					</select>
+				
+ 			</div>
 			<div class="form-group">
 				<label for="volume" class="sr-only">Volume</label>
 				<input type="text" name="volume" class="form-control" placeholder="Volume">
@@ -43,6 +29,7 @@
 			</div>
 			<input type="submit" value="Submit" class="btn btn-primary">
 		</form>
+	</div>
 	</body>
 
 
