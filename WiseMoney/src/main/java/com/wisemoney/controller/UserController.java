@@ -37,8 +37,6 @@ public class UserController {
 
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String saveUser(HttpServletRequest req, HttpServletResponse resp) {
-		Map<String, String> messages = new HashMap<String, String>();
-		req.setAttribute("messages", messages);
 		
 		String username = req.getParameter("username");
 		String firstName = req.getParameter("firstName");
@@ -50,7 +48,6 @@ public class UserController {
 		UserDao ud = new UserDaoImpl();
 		
 		if((ud.getUserByUsername(username))!=null) {
-			messages.put("username", "This username is already taken.");
 			return "register";
 		}
 		
