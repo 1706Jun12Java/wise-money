@@ -16,15 +16,15 @@ import com.wisemoney.domain.UserRole;
 import com.wisemoney.util.HibernateUtil;
 
 public class UserDaoImpl implements UserDao {
-	//get a user by id
-//	@Override
-//	public User getUser(int userId) {
-//		Session s = HibernateUtil.getSession();
-//		Query query = s.createQuery("select u.id, u.firstName, u.lastName, u.username, u.email, u.userRole from User u where u.id=:id");
-//		query.setInteger("id", userId);
-//		User user = (User) query.uniqueResult();
-//		return user;
-//	}
+	//get a user by username
+	@Override
+	public User getUserByUsername(String username) {
+		Session s = HibernateUtil.getSession();
+		Query query = s.createQuery("from User u where u.username=:username");
+		query.setString("username", username);
+		User user = (User) query.uniqueResult();
+		return user;
+	}
 
 	@Override
 	public User login(String username, String password) {
@@ -33,7 +33,6 @@ public class UserDaoImpl implements UserDao {
 		query.setString("username", username);
 		query.setString("password", password);
 		User user = (User) query.uniqueResult();
-//		Criteria cr = s.createCriteria(User.class)
 		
 		return user;
 	}

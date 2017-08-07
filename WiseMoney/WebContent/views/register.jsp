@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,7 +24,6 @@
 </head>
 
 <body>
-	<button class="btn btn-primary" ng-click="togglePlayerState()"><span class="glyphicon glyphicon-play"></span><span class="glyphicon glyphicon-pause"></span></button>
 
 <div class="video-background">
 	<div class="video-foreground">
@@ -46,7 +47,9 @@
                 <form class="form-signin" action="register" method="POST">
                 <input type="text" class="form-control" placeholder="First Name" name="firstName" required autofocus>
                 <input type="text" class="form-control" placeholder="Last Name" name="lastName" required>
-                <input type="text" class="form-control" placeholder="Username" name="username" required>
+                <input type="text" class="form-control" placeholder="Username" name="username" value="${fn:escapeXml(param.username)}" required>
+                <span class="error">${messages.username}</span>
+                
                 <input type="text" class="form-control" placeholder="Email" name="email" required>
                 <input type="password" class="form-control" placeholder="Password" name="password" required>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">

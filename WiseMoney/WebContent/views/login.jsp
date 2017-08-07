@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,9 +32,7 @@
 	frameborder="0" allowfullscreen></iframe>
 	</div>
 </div> 
-<%-- <c:if test="${not empty errorMessage}">
-	<c:out value=${errorMessage}"/>
-</c:if> --%>
+
 <h3 class="projectTitle">Wise Money</h3>
 
 <div class="container">
@@ -43,7 +43,9 @@
                 <img class="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="">
                 <form class="form-signin" action="login" method="POST">
                 <input type="text" class="form-control" placeholder="Username" name="username" required>
-                <input type="password" class="form-control" placeholder="Password" name="password" required>
+                <input type="password" class="form-control" placeholder="Password" name="password" value="${fn:escapeXml(param.username)}" required>
+                <span class="error">${messages.password}</span>
+                
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
                     Sign in</button>
                 <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
