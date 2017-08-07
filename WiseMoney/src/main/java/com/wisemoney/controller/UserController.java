@@ -52,12 +52,14 @@ public class UserController {
 		
 		//validation on the provided form data
 		UserDao ud = new UserDaoImpl();
+		Map<String, String> messages = new HashMap<String, String>();
+		req.setAttribute("messages", messages);
 		
 		if((ud.getUserByUsername(username))!=null) {
+			messages.put("username", "Username already taken");
 			return "register";
 		}
 		
-//		UserDao ud = new UserDaoImpl();
 		ud.register(username, firstName, lastName, password, email);
 		LOGGER.debug("Go to login page");
 		return "redirect:login";
@@ -67,6 +69,7 @@ public class UserController {
 	public String showLoginPage(HttpSession session) {
 		LOGGER.debug("In login page");
 		if((session.getAttribute("user"))==null) {
+			LOGGER.debug(session.getAttribute("user"));
 			return "login";
 		} else {
 			return "redirect:profile";
@@ -101,10 +104,6 @@ public class UserController {
 	public String getLogout(HttpSession session, HttpServletRequest req, HttpServletResponse resp) throws ServletException {
 		session = req.getSession(false);
 		session.invalidate();
-		Cookie UIDCookie = new Cookie("JSESSIONID", "");
-		UIDCookie.setMaxAge(0);
-		UIDCookie.setPath("/");
-		resp.addCookie(UIDCookie);
 		
 		LOGGER.debug("Logout");
 		return "redirect:login";
