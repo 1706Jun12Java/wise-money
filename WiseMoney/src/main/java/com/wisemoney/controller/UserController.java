@@ -1,5 +1,8 @@
 package com.wisemoney.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -41,10 +44,17 @@ public class UserController {
 		String password = req.getParameter("password");
 		String email = req.getParameter("email");
 		
+		//validation on the provided form data
 		UserDao ud = new UserDaoImpl();
+		
+		if((ud.getUserByUsername(username))!=null) {
+			return "register";
+		}
+		
+//		UserDao ud = new UserDaoImpl();
 		ud.register(username, firstName, lastName, password, email);
 		LOGGER.debug("Go to login page");
-		return "login";
+		return "redirect:login";
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
@@ -62,6 +72,10 @@ public class UserController {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		
+		//validation on login credentials
+		Map<String, String> messages = new HashMap<String, String>();
+		req.setAttribute("messages", messages);
+				
 		UserDao ud = new UserDaoImpl();
 		if (ud.login(username, password)!=null) {
 			User user = ud.login(username, password);
@@ -69,7 +83,9 @@ public class UserController {
 			LOGGER.debug("Go to profile page");
 			return "redirect:profile";
 		} else {
+			
 			LOGGER.debug("Invalid credentials. Return to login page");
+			messages.put("password", "Invalid username/password");
 			return "login";
 		}
 		
@@ -96,7 +112,7 @@ public class UserController {
 			return "profile";	
 		} else {
 			LOGGER.debug("Not signed in yet. Return to login page");
-			return "login";
+			return "redirect:login";
 		}
 	}
 	
@@ -104,16 +120,26 @@ public class UserController {
 	public String updatePortfolio(HttpSession session, HttpServletRequest req) {
 		LOGGER.debug("In updatePortfolio method");
 		String stockSymbol = req.getParameter("stockSymbol");
-		System.out.println(stockSymbol);
 		String volumeString = req.getParameter("volume");
 		int volume = Integer.parseInt(volumeString);
 		String lastTx = req.getParameter("lastTx");
+
+		//validation on volume. You can't buy/sell 0 or negative shares!
+		Map<String, String> messages = new HashMap<String, String>();
+		req.setAttribute("messages", messages);
+		
+		if(volume<=0) {
+			messages.put("volume", "Invalid number. Please enter a positive number greater than 0");
+			return "redirect:profile";
+			
+		}
 		
 		User user = (User) session.getAttribute("user");
 		StockDao sd = new StockDaoImpl();
 		Stock stock = (Stock) sd.getStockBySymbol(stockSymbol);
 		
 		PortfolioDao pd = new PortfolioDaoImpl();
+		
 		
 		if (lastTx.equals("BUY")) {
 			LOGGER.debug("User bought a share(s)");
