@@ -17,5 +17,5 @@ app.config(function($routeProvider){
 		templateUrl: 'views/stockForm.jsp',
 		controller: 'StockFormCtrl'
 	})
-	.otherwise({redirectTo:'/'});
+//	.otherwise({redirectTo:'/'});
 });

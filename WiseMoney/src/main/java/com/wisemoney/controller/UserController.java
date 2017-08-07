@@ -29,6 +29,12 @@ public class UserController {
 	
 	private static final Logger LOGGER = Logger.getLogger(UserController.class);
 	
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public String getMainPage() {
+		LOGGER.debug("Redirect root url to login page");
+		return "redirect:login";
+	}
+	
 	@RequestMapping(value="/register", method=RequestMethod.GET)
 	public String showRegistrationPage() {
 		LOGGER.debug("In register page");

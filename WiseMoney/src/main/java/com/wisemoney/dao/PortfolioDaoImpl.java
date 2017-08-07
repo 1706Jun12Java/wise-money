@@ -8,13 +8,14 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Service;
 
 import com.wisemoney.domain.Portfolio;
 import com.wisemoney.util.HibernateUtil;
 import com.wisemoney.domain.Stock;
 import com.wisemoney.domain.User;
 
-
+@Service
 public class PortfolioDaoImpl implements PortfolioDao {
 
 	@Override

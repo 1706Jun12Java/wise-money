@@ -3,10 +3,12 @@ package com.wisemoney.dao;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Service;
 
 import com.wisemoney.domain.UserRole;
 import com.wisemoney.util.HibernateUtil;
 
+@Service
 public class UserRoleDaoImpl implements UserRoleDao {
 	
 	
