@@ -7,7 +7,7 @@
 		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<!-- this is very noisy in the console -->
-		<property name="hibernate.show_sql">true</property>
+		<!--  <property name="hibernate.show_sql">true</property> -->
 		<!-- creates database if "create", keeps existing structure and values if "update" or nothing -->
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<!-- map domain object classes -->

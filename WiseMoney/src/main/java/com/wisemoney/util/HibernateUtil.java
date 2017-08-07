@@ -12,12 +12,11 @@ import org.hibernate.service.ServiceRegistry;
 
 public class HibernateUtil {
 	
-	private static final SessionFactory sessionFactory = setSessionFactory();
+	private static SessionFactory sessionFactory = sessionFactory();
 	private static Session session;
 	
 	public static Session getSession() {
-		session = sessionFactory.openSession();
-		return session;
+		return sessionFactory.openSession();
 	}
 	
 	public void closeSession() {
@@ -25,44 +24,48 @@ public class HibernateUtil {
 			session.close();
 	}
 
-	private static synchronized SessionFactory sessionFactory(String filename) {
+	private static synchronized SessionFactory sessionFactory() {
+		Properties prop = new Properties();
 
-		Configuration c = new Configuration();
+		Configuration c = null;
+		
+		InputStream resourceAsStream = null;
 
-		ClassLoader classLoader = null;
-		InputStream input = null;
 		try {
 
-			classLoader = Thread.currentThread().getContextClassLoader();
-			input = classLoader.getResourceAsStream("env.properties");
-			Properties prop = new Properties();
-			prop.load(input);
+//			classLoader = Thread.currentThread().getContextClassLoader();
+//			input = classLoader.getResourceAsStream("env.properties");
+//			Properties prop = new Properties();
+//			prop.load(input);
+			resourceAsStream = HibernateUtil.class.getClassLoader().getResourceAsStream("env.properties");
 
 			// load a properties file
-			prop.load(input);
+			prop.load(resourceAsStream);
+			c = new Configuration().configure("hibernate.cfg.xml");
+
 			c.setProperty("hibernate.connection.url", prop.getProperty("HIB_URL"))
 			 .setProperty("hibernate.connection.username", prop.getProperty("HIB_USERNAME"))
-			 .setProperty("hibernate.connection.password", prop.getProperty("HIB_PASSWORD"))
-		     .configure(filename);
+			 .setProperty("hibernate.connection.password", prop.getProperty("HIB_PASSWORD"));
+//		     .configure(filename);
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		} finally {
-			if (input != null) {
+			if (resourceAsStream != null) {
 				try {
-					input.close();
+					resourceAsStream.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
 		}
-
+		
    		ServiceRegistry sr = new StandardServiceRegistryBuilder().applySettings(c.getProperties()).build();
         return c.buildSessionFactory(sr);
     }
 	
-	public static SessionFactory setSessionFactory() {
-		return sessionFactory("hibernate.cfg.xml");
-	}
+//	public static SessionFactory setSessionFactory() {
+//		return sessionFactory("hibernate.cfg.xml");
+//	}
 
 }
