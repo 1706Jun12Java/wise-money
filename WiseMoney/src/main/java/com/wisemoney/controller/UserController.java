@@ -126,17 +126,23 @@ public class UserController {
 		LOGGER.debug("In updatePortfolio method");
 		String stockSymbol = req.getParameter("stockSymbol");
 		String volumeString = req.getParameter("volume");
-		int volume = Integer.parseInt(volumeString);
 		String lastTx = req.getParameter("lastTx");
 
 		//validation on volume. You can't buy/sell 0 or negative shares!
 		Map<String, String> messages = new HashMap<String, String>();
 		req.setAttribute("messages", messages);
 		
+		int volume = 0;
+		
+		try {
+			volume = Integer.parseInt(volumeString);
+		} catch (NumberFormatException e) {
+			return "redirect:profile";
+		}
+		
 		if(volume<=0) {
 			messages.put("volume", "Invalid number. Please enter a positive number greater than 0");
-			return "redirect:profile";
-			
+			return "redirect:profile";	
 		}
 		
 		User user = (User) session.getAttribute("user");

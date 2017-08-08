@@ -14,7 +14,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 
 </head>
@@ -60,17 +61,21 @@
 				<li>
 				 <a href="#/portfolio">
 				 My Portfolio</a></li>
-				
-				
+				 
+				 <li>
+				<a href="#/sharpeRatioTrend">
+				Shape Ratio Trend</a></li>
+
 				<li>
 				<a href="#/stocks">
 				Stock Market</a></li>
 				
 				
-				
+
 				<li>
 				<a href="#/stockForm">
-				BUY/SELL</a></li>				
+				BUY/SELL</a></li>
+								
 			</ul>
 			</div>
 		</div>

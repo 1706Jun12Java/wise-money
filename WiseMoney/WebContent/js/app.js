@@ -17,5 +17,8 @@ app.config(function($routeProvider){
 		templateUrl: 'views/stockForm.jsp',
 		controller: 'StockFormCtrl'
 	})
+	.when('/sharpeRatioTrend', {
+		templateUrl: 'sharperatiochart.jsp'
+	})
 //	.otherwise({redirectTo:'/'});
 });
