@@ -20,7 +20,7 @@ import com.wisemoney.domain.User;
 @RestController
 public class PortfolioController {
 	
-	private static final Logger LOGGER = Logger.getLogger(UserController.class);
+	private static final Logger LOGGER = Logger.getLogger(PortfolioController.class);
 		
 	@RequestMapping(value="/portfolio", method=RequestMethod.GET)
 	public List<Portfolio> showUserPortfolio(HttpSession session) {
