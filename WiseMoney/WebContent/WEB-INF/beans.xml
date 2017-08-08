@@ -10,7 +10,7 @@
 	<context:component-scan base-package="com.wisemoney"/>
 	
 	<!-- enable mvc annotations -->
-	<mvc:annotation-driven></mvc:annotation-driven>
+	<mvc:annotation-driven/>
 	
 	<!-- set up front controller's view resolver -->
 	<bean
@@ -26,4 +26,5 @@
 	
  		<mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
  	 	<mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
+ 	 	<mvc:default-servlet-handler/>
 </beans>
